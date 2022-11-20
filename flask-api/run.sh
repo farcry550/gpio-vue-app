@@ -1,0 +1,1 @@
+flask --app gpio --debug run --host=0.0.0.0

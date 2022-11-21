@@ -26,7 +26,6 @@ export default {
     async toggleLed() {
       if (this.ledIsOn)
         this.msg = await this.turnOffLed();
-
       else
         this.msg = await this.turnOnLed();
       
@@ -34,13 +33,15 @@ export default {
     async turnOnLed() {
       let response = await Api.turnOnLed();
       let responseData = response.data; 
-      this.ledIsOn = responseData.success ? true : this.ledIsOn;
 
+      this.ledIsOn = responseData.success ? true : this.ledIsOn;
+      
       return responseData.message;
     },
     async turnOffLed() {
       let response = await Api.turnOffLed();
       let responseData = response.data; 
+
       this.ledIsOn = responseData.success ? false : this.ledIsOn;
 
       return responseData.message;
@@ -49,8 +50,8 @@ export default {
   async created() {
       let response = await Api.readLed();
       let responseData = response.data;
-      this.ledIsOn = responseData.value;
 
+      this.ledIsOn = responseData.value;
       this.loading = false;
   }
 }

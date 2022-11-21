@@ -21,7 +21,7 @@ def write_response(success,msg):
 def read_response(pin,value):
   return response(f'{{\"pin\":\"{pin}\",\"value\":{value}}}')
 
-@app.route('/write',methods=['POST'])
+@app.route('/api/write',methods=['POST'])
 def write_to_pin():
   data = request.get_json()
   requested_pin = int(data.get('pin'))
@@ -30,7 +30,7 @@ def write_to_pin():
   GPIO.output(requested_pin,requested_value)
   return write_response('true',f'Value {requested_value} written to pin {requested_pin}')
 
-@app.route('/read/<pin>')
+@app.route('/api/read/<pin>')
 def read_pin(pin):
   GPIO.setup(int(pin),GPIO.OUT)
   value = GPIO.input(int(pin))

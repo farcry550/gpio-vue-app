@@ -1,1 +1,1 @@
-flask --app gpio --debug run --host=0.0.0.0
+flask --app __gpio__ --debug run --host=0.0.0.0

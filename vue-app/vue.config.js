@@ -3,9 +3,8 @@ module.exports = {
         port: 8085,
         proxy: {
             '^/api': {
-                target: "http://gpio.api",
+                target: "http://192.168.0.170:5000",
                 changeOrigin: true,
-                pathRewrite: { '^/api': '/' }
             }
         }
     }
